@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Gank</string>
+    <string name="action_settings">Settings</string>
+    <string name="writer">writer</string>
+    <string name="create_date">yesterday</string>
+    <string name="delimiter_dot">·</string>
+    <string name="source">Web</string>
+    <string name="title">这是一篇文章的标题，字数差不多了</string>
+    <string name="no_ganks">今天还没发布干货，看看往日的吧！</string>
+    <string name="click_to_read_history">点击查看往日干货</string>
+    <string name="submit_success">提交干货成功</string>
+    <string name="load_failed">加载干货失败了</string>
+    <string name="header">header</string>
+</resources>
