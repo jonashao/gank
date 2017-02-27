@@ -35,7 +35,7 @@ import io.rx_cache2.Reply;
 public interface GanksDataSource {
 
 
-    Observable<Reply<Response<List<Calendar>>>> getHistory();
+    Observable<Reply<Response<List<String>>>> getHistory(boolean evict);
 
     Observable<Reply<Response<Map<String, List<Gank>>>>> getGanks(Calendar today, boolean evict);
 

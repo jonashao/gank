@@ -16,6 +16,8 @@
     <string name="about">关于</string>
 
     <string name="about_description_text">
+        干货\n
+        <br/>
         本App中所有数据均来自<a href="http://gank.io">干货集中营</a>\n
         <br/>
         icon由<a href="icons8.com">icons8</a>提供

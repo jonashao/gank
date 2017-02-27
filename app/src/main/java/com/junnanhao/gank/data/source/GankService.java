@@ -3,14 +3,13 @@ package com.junnanhao.gank.data.source;
 import com.junnanhao.gank.data.models.Gank;
 import com.junnanhao.gank.data.models.Response;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+
 
 /**
  * Created by Jonas on 2017/1/21.
@@ -26,7 +25,7 @@ public interface GankService {
 
 
     @GET("day/history")
-    Observable<Response<List<Calendar>>> getHistory();
+    Observable<Response<List<String>>> getHistory();
 
     /**
      * 技术文章列表

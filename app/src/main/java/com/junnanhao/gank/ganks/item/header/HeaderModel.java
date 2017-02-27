@@ -1,8 +1,6 @@
 package com.junnanhao.gank.ganks.item.header;
 
-import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
-import android.support.annotation.StringRes;
 import android.widget.ImageView;
 import android.widget.TextView;
 

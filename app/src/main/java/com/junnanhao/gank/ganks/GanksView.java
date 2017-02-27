@@ -15,6 +15,7 @@ import com.junnanhao.gank.data.models.Gank;
 import com.junnanhao.gank.ui.ScrollChildSwipeRefreshLayout;
 import com.junnanhao.gank.ui.VerticalGridCardSpacingDecoration;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -45,6 +46,8 @@ public class GanksView extends ScrollChildSwipeRefreshLayout implements GanksCon
         init();
     }
 
+
+
     private void init() {
         inflate(getContext(), R.layout.ganks_view_content, this);
         ButterKnife.bind(this);
@@ -73,10 +76,6 @@ public class GanksView extends ScrollChildSwipeRefreshLayout implements GanksCon
 
     @Override
     public void showGanks(Map<String, List<Gank>> ganks) {
-        if (ganks.size() == 0) {
-            showNoGank();
-            return;
-        }
         mAdapter.setData(ganks);
 
         gankListView.setVisibility(VISIBLE);
@@ -109,15 +108,13 @@ public class GanksView extends ScrollChildSwipeRefreshLayout implements GanksCon
     }
 
     @Override
-    public void showNoGank() {
-        noGank.setVisibility(VISIBLE);
-        gankListView.setVisibility(GONE);
-        Timber.d("No gank");
+    public void showNoTodayGank() {
+        Timber.d("No today gank");
     }
 
 
     @Override
-    public void showCalendarMenu() {
+    public void showCalendarMenu(List<Calendar> calendars) {
 
     }
 

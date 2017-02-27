@@ -39,8 +39,6 @@ import static junit.framework.Assert.assertTrue;
 @SmallTest
 public class GankRepositoryTest {
 
-    public static final String TEST_STRING = "This is a string";
-    public static final long TEST_LONG = 12345678L;
     private GankRepository gankRepository;
 
     @Before
@@ -70,8 +68,6 @@ public class GankRepositoryTest {
                 .subscribe(stringListMap -> {
                     assertTrue(stringListMap.containsKey("Android"));
                     assertEquals(stringListMap.get("Android").size(), 3);
-                    stringListMap.get("Android")
-                            .forEach(gank -> Timber.d("gank: %s", gank.toString()));
                 }, Timber::e);
     }
 
@@ -86,8 +82,6 @@ public class GankRepositoryTest {
                 .subscribe(stringListMap -> {
                     assertTrue(stringListMap.containsKey("Android"));
                     assertEquals(stringListMap.get("Android").size(), 3);
-                    stringListMap.get("Android")
-                            .forEach(gank -> Timber.d("gank: %s", gank.toString()));
                 }, Timber::e);
     }
 

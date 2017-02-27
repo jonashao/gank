@@ -4,6 +4,7 @@ import com.junnanhao.gank.base.BasePresenter;
 import com.junnanhao.gank.base.BaseView;
 import com.junnanhao.gank.data.models.Gank;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -31,15 +32,17 @@ interface GanksContract {
 
         void showLoadingGanksError();
 
-        void showNoGank();
+        void showNoTodayGank();
 
-        void showCalendarMenu();
+        void showCalendarMenu(List<Calendar> calendars);
     }
 
     interface Presenter extends BasePresenter {
         void result(int requestCode, int resultCode);
 
         void loadGanks(boolean forceUpdate);
+
+        void loadGanks(Calendar date, boolean forceUpdate);
 
         void submitGank();
 

@@ -26,7 +26,6 @@ public class AboutActivity extends AppCompatActivity {
                 .addItem(versionElement)
                 .addGroup(getString(R.string.about_contact_us))
                 .addEmail("junnanhao@gmail.com")
-                .addWebsite("http://junnanhao.com/")
                 .addGitHub("jonashao/gank")
                 .create();
         setContentView(aboutPage);

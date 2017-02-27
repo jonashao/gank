@@ -1,6 +1,5 @@
 package com.junnanhao.gank.ganks;
 
-import android.util.Log;
 
 import com.airbnb.epoxy.EpoxyAdapter;
 import com.junnanhao.gank.R;
@@ -11,8 +10,6 @@ import com.junnanhao.gank.ganks.item.header.HeaderModel_;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import timber.log.Timber;
 
 /**
  * Created by Jonas on 2017/2/23.
@@ -35,22 +32,23 @@ public class GanksAdapter extends EpoxyAdapter {
         put("福利", R.drawable.ic_bonus);
     }};
 
-
     public void setData(Map<String, List<Gank>> ganks) {
         models.clear();
-        ganks.keySet().forEach(s -> {
-            models.add(new HeaderModel_().icon(drawableOf(s)).text(s));
-            ganks.get(s).forEach(gank -> {
-                Timber.d("gank: %s", gank);
-                models.add(new GankEpoxyModel(gank));
-            });
 
-        });
+        for (String s : ganks.keySet()) {
+            models.add(new HeaderModel_().icon(drawableOf(s)).text(s));
+            for (Gank gank : ganks.get(s)) {
+                models.add(new GankEpoxyModel(gank));
+            }
+        }
+
         notifyModelsChanged();
     }
 
     private int drawableOf(String type) {
-        return drawables.getOrDefault(type, R.drawable.ic_bar_chart);
+        Integer res = drawables.get(type);
+        return res != null ? res : R.drawable.ic_bar_chart;
     }
+
 
 }

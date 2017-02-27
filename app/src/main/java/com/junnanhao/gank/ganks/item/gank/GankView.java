@@ -1,6 +1,5 @@
 package com.junnanhao.gank.ganks.item.gank;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Build;
@@ -35,7 +34,6 @@ public class GankView extends CardView implements GankContract.View {
 
     private String url;
     private PrettyTime p;
-    private GankContract.Presenter mPresenter;
 
     public GankView(Context context) {
         super(context);
@@ -79,8 +77,5 @@ public class GankView extends CardView implements GankContract.View {
 
     }
 
-    @Override
-    public void setPresenter(GankContract.Presenter presenter) {
-        mPresenter = presenter;
-    }
+
 }

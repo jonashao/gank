@@ -7,7 +7,6 @@ import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.junnanhao.gank.BuildConfig;
 import com.junnanhao.gank.data.gson.AutoValueGsonFactory;
-import com.junnanhao.gank.data.gson.GsonSpeaker;
 import com.junnanhao.gank.data.models.Gank;
 import com.junnanhao.gank.data.models.Response;
 import com.junnanhao.gank.ganks.GankFilterType;
@@ -22,6 +21,7 @@ import io.reactivex.Observable;
 import io.rx_cache2.EvictProvider;
 import io.rx_cache2.Reply;
 import io.rx_cache2.internal.RxCache;
+import io.victoralbertos.jolyglot.GsonSpeaker;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -89,7 +89,7 @@ public class GankRepository implements GanksDataSource {
 
     @Override
     public Observable<Reply<Response<Map<String, List<Gank>>>>> getGanks(Calendar today, boolean evict) {
-        return getGanks(today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DAY_OF_MONTH) - 3, evict);
+        return getGanks(today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DAY_OF_MONTH) , evict);
     }
 
 
@@ -100,8 +100,8 @@ public class GankRepository implements GanksDataSource {
 
 
     @Override
-    public Observable<Reply<Response<List<Calendar>>>> getHistory() {
-        return null;
+    public Observable<Reply<Response<List<String>>>> getHistory(boolean evict) {
+        return gankCacheProvider.getHistory(gankService.getHistory(), new EvictProvider(evict));
     }
 
 }
