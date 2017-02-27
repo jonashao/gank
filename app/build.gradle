@@ -10,7 +10,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "0.1.1 beta"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         jackOptions{
@@ -102,5 +102,6 @@ dependencies {
 
     compile 'com.jakewharton.timber:timber:4.5.1'
 
+    compile 'com.github.medyo:android-about-page:1.2'
 
 }

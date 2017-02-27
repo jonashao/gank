@@ -5,10 +5,22 @@
     <string name="create_date">yesterday</string>
     <string name="delimiter_dot">·</string>
     <string name="source">Web</string>
-    <string name="title">这是一篇文章的标题，字数差不多了</string>
-    <string name="no_ganks">今天还没发布干货，看看往日的吧！</string>
-    <string name="click_to_read_history">点击查看往日干货</string>
+    <string name="title">这是一篇文章的标题，字数很多，标题很长很长很长</string>
+    <string name="network_poor">网络异常</string>
+    <string name="click_to_refresh_network">点击刷新干货</string>
     <string name="submit_success">提交干货成功</string>
     <string name="load_failed">加载干货失败了</string>
     <string name="header">header</string>
+
+    <!--About Page-->
+    <string name="about">关于</string>
+
+    <string name="about_description_text">
+        本App中所有数据均来自<a href="http://gank.io">干货集中营</a>\n
+        <br/>
+        icon由<a href="icons8.com">icons8</a>提供
+    </string>
+    <string name="versionName">版本号 </string>
+
+
 </resources>

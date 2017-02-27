@@ -27,6 +27,8 @@ interface GanksContract {
 
         void showSuccessfullySubmitMessage();
 
+        void showNetworkError();
+
         void showLoadingGanksError();
 
         void showNoGank();

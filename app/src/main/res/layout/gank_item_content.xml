@@ -2,21 +2,24 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/gankView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/writer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="sans-serif"
         android:text="@string/writer"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="@color/colorTextAccent"
-        android:textSize="12sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -26,9 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
         android:text="@string/create_date"
-        android:textSize="12sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintLeft_toRightOf="@+id/writer"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -38,9 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:text="@string/source"
-        android:textSize="12sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintLeft_toRightOf="@+id/delimiter_dot"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -50,37 +51,36 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:text="@string/delimiter_dot"
         android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/date"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/description"
-        android:layout_width="344dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:gravity="start"
         android:text="@string/title"
-        android:textColor="@color/colorText"
+        android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/writer"
+        app:layout_constraintRight_toRightOf="@+id/toggle_mark"
         app:layout_constraintTop_toBottomOf="@+id/writer"
-        app:layout_constraintVertical_bias="0.011"
-        app:layout_constraintRight_toRightOf="@+id/toggle_mark"/>
+        app:layout_constraintVertical_bias="0.0"/>
 
     <net.colindodd.toggleimagebutton.ToggleImageButton
         android:id="@+id/toggle_mark"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="-2dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:visibility="invisible"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tib_drawable_off="@drawable/ic_bookmark_border_black_24dp"
-        app:tib_drawable_on="@drawable/ic_bookmark_black_24dp"/>
+        app:tib_drawable_off="@drawable/ic_bookmark_border"
+        app:tib_drawable_on="@drawable/ic_bookmark"/>
 </android.support.constraint.ConstraintLayout>

@@ -20,6 +20,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import timber.log.Timber;
 
 /**
@@ -29,7 +30,7 @@ import timber.log.Timber;
 
 public class GanksView extends ScrollChildSwipeRefreshLayout implements GanksContract.View {
     @BindView(R.id.ganks) RecyclerView gankListView;
-    @BindView(R.id.noGank) LinearLayout noGank;
+    @BindView(R.id.networkError) LinearLayout noGank;
 
     private GanksAdapter mAdapter;
     private GanksContract.Presenter mPresenter;
@@ -58,6 +59,11 @@ public class GanksView extends ScrollChildSwipeRefreshLayout implements GanksCon
         setOnRefreshListener(() -> mPresenter.loadGanks(false));
     }
 
+    @OnClick(R.id.networkError)
+    void refreshGanks() {
+        mPresenter.loadGanks(true);
+    }
+
     @Override
     public void setLoadingIndicator(boolean active) {
         final SwipeRefreshLayout srl = this;
@@ -71,7 +77,6 @@ public class GanksView extends ScrollChildSwipeRefreshLayout implements GanksCon
             showNoGank();
             return;
         }
-
         mAdapter.setData(ganks);
 
         gankListView.setVisibility(VISIBLE);
@@ -87,6 +92,13 @@ public class GanksView extends ScrollChildSwipeRefreshLayout implements GanksCon
     @Override
     public void showSuccessfullySubmitMessage() {
         showMessage(R.string.submit_success);
+    }
+
+    @Override
+    public void showNetworkError() {
+        noGank.setVisibility(VISIBLE);
+        gankListView.setVisibility(GONE);
+        Timber.e("网络异常");
     }
 
 

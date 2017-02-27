@@ -25,34 +25,36 @@
         android:layout_height="match_parent"/>
 
     <LinearLayout
-        android:id="@+id/noGank"
+        android:id="@+id/networkError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/noGankIcon"
+            android:id="@+id/networkErrorIcon"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_history" />
+            android:src="@drawable/ic_cloud_off" />
 
         <TextView
-            android:id="@+id/noGankMain"
+            android:id="@+id/networkErrorTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/no_ganks"
-            android:layout_marginBottom="@dimen/list_item_padding" />
+            android:layout_marginBottom="@dimen/list_item_padding"
+            android:text="@string/network_poor"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
         <TextView
-            android:id="@+id/noGanksHint"
+            android:id="@+id/networkErrorHint"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="@string/click_to_read_history" />
+            android:text="@string/click_to_refresh_network"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
 
     </LinearLayout>
 

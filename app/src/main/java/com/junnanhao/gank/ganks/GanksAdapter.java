@@ -44,6 +44,7 @@ public class GanksAdapter extends EpoxyAdapter {
                 Timber.d("gank: %s", gank);
                 models.add(new GankEpoxyModel(gank));
             });
+
         });
         notifyModelsChanged();
     }

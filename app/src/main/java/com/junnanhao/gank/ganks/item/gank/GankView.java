@@ -1,7 +1,9 @@
 package com.junnanhao.gank.ganks.item.gank;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
@@ -47,6 +49,9 @@ public class GankView extends CardView implements GankContract.View {
 
     private void init() {
         inflate(getContext(), R.layout.gank_item_content, this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            setElevation(5);
+        }
         ButterKnife.bind(this);
         p = new PrettyTime();
     }
