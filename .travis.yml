@@ -1,6 +1,6 @@
 language: android
 jdk:
-  - oraclejdk8
+- oraclejdk8
 android:
   components:
   - tools
@@ -9,17 +9,19 @@ android:
   - android-25
   - extra-android-m2repository
   licenses:
-    - '.+'
+  - ".+"
 before_script:
-  - mkdir -p "${ANDROID_HOME}/licenses"
-  - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "${ANDROID_HOME}/licenses/android-sdk-license"
-  - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "${ANDROID_HOME}/licenses/android-sdk-preview-license"
-  - echo -e "\nd975f751698a77b662f1254ddbeed3901e976f5a" > "${ANDROID_HOME}/licenses/intel-android-extra-license"
+- mkdir -p "${ANDROID_HOME}/licenses"
+- echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "${ANDROID_HOME}/licenses/android-sdk-license"
+- echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "${ANDROID_HOME}/licenses/android-sdk-preview-license"
+- echo -e "\nd975f751698a77b662f1254ddbeed3901e976f5a" > "${ANDROID_HOME}/licenses/intel-android-extra-license"
 script:
 - "./gradlew assembleRelease || true --stacktrace"
 before_install:
+- mkdir keys
+- openssl aes-256-cbc -K $encrypted_70d69dea56b6_key -iv $encrypted_70d69dea56b6_iv
+  -in gank_keystore.jks.enc -out keys/gank_keystore.jks -d
 - chmod +x gradlew
-- openssl aes-256-cbc -K $encrypted_2b79d61f6dc7_key -iv $encrypted_2b79d61f6dc7_iv -in samantha.jks.enc -out keys/samantha.jks -d
 cache:
   directories:
-    - $HOME/.m2
+  - "$HOME/.m2"
