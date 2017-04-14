@@ -80,3 +80,7 @@
 
 # pretty time
 -keep class org.ocpsoft.prettytime.i18n.**
+
+# gradle-retrolambda
+-dontwarn java.lang.invoke.*
+-dontwarn **$$Lambda$*
