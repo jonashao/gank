@@ -6,6 +6,4 @@
 /captures
 .externalNativeBuild
 /.idea/
-/gradlew
-/gradlew.bat
 libs/

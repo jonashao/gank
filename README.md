@@ -1,6 +1,11 @@
-# Gank
+# Gank 
+
+[![Build Status](https://travis-ci.org/jonashao/gank.svg?branch=master)](https://travis-ci.org/jonashao/gank)
+
 An unofficial Gank android app, implemented with RxJava2, Retrofit, RxCache, 
 AutoValue and Epoxy.
+
+[下载App](https://fir.im/26v9)
 
 所有数据来自 [干货集中营](https://gank.io)
 

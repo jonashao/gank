@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
+import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import com.junnanhao.gank.data.gson.AutoValueGson_AutoValueGsonFactory;
 import com.junnanhao.gank.data.models.Gank;
 import com.junnanhao.gank.data.source.GankRepository;
@@ -118,8 +119,10 @@ class GanksPresenter implements GanksContract.Presenter {
                         , throwable -> {
                             Timber.e(throwable);
                             if (throwable instanceof IOException
-                                    || throwable instanceof CompositeException)
+                                    || throwable instanceof CompositeException
+                                    ||throwable instanceof HttpException)
                                 view.showNetworkError();
+
                             view.setLoadingIndicator(false);
                             view.showLoadingGanksError();
                         }, () -> {
