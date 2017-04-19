@@ -22,6 +22,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_70d69dea56b6_key -iv $encrypted_70d69dea56b6_iv
   -in gank_keystore.jks.enc -out keys/gank_keystore.jks -d
 - chmod +x gradlew
+- gem install fir-cli
 before_deploy:
 - mv app/build/outputs/apk/app-release.apk app/build/outputs/apk/gank.apk
 deploy:
@@ -32,6 +33,9 @@ deploy:
     secure: "HoZlREBj/w+xLlQiriixrX63gPD8BX6ZTz0d4LSdk00E538orVpHhfq1TqfKU1Aw509r7d8ihIDu8dvPMtXFHz6nF2uJWStVFDx2kSVIQVoLkYnB4D+E/AkOa3sXmxOzv4CwaAN8bhFfRrXv38Erjo8dAUISO+648+9xENYn5Khgofmtdmay37AjbC5iim9lboiZ9QPQZOdzZh+RHzBO+TbTcSq6AaQUlzTWfQBNW8P3dJUTiMSBmAFPqk2BduhM4HqwVz/hKm0Q8KTdFXDpJn3XfuMXGamtKCTCPmWy+roG6l/ejwkjr0/Wzgio8JZGmvjHGfISP7QCsVOCF4/QIJ0+ZGeQnssWUOz2NRtI1zGmejPtVDWnd0yfWRwPL8BvX73I1ycnlehi4RNmteV0YdQ5GB6Ai/UwP6g1Ol48e7tMXuTrnMp/vgvYpKrXwnSDwa4sIKg8q37X2wFHtQCAryFr8WPmu5NvYiHL2g41SUL4tMSXAFCwEcziBQOJdZTiwGa2jiSAvtnub4nIt7N8PKVVKXRbwfyD9QeIOYCY5gBwv5WWmQIlgbEtqD9i+XSEqgLYpJ8UllgVkZ7F96/lasdcy4VTINNmU/OGn87/1ZYjF6AFPPe8LSdyaATV1dG+90JBhg4l7I/pr5T7RS4qI5SPHIz1a6japZOeAFuB7z8="
   on:
     tags: true
+after_deploy:
+- fir p app/build/outputs/apk/gank.apk -T $FIR_TOKEN -c "`git cat-file tag $TRAVIS_TAG`"
 cache:
   directories:
   - "$HOME/.m2"
+

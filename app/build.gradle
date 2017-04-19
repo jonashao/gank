@@ -11,8 +11,8 @@ android {
         applicationId "com.junnanhao.gank"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "0.1.1 beta"
+        versionCode 2
+        versionName "Version 0.1.2-beta"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true
