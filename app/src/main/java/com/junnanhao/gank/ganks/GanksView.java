@@ -58,6 +58,9 @@ public class GanksView extends ScrollChildSwipeRefreshLayout implements GanksCon
 
         setScrollUpChild(gankListView);
         setOnRefreshListener(() -> mPresenter.loadGanks(false));
+
+        setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
+        
     }
 
     @OnClick(R.id.networkError)

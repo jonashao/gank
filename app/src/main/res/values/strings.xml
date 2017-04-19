@@ -23,6 +23,17 @@
         icon由<a href="icons8.com">icons8</a>提供
     </string>
     <string name="versionName">版本号 </string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="android">Android</string>
+    <string name="ios">iOS</string>
+    <string name="daily">Daily</string>
+    <string name="video">休息视频</string>
+    <string name="bonus">福利</string>
+    <string name="resources">拓展资源</string>
+    <string name="web">前端</string>
 
 
 </resources>

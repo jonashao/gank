@@ -41,6 +41,6 @@ public interface GanksDataSource {
 
     Observable<Reply<Response<Map<String, List<Gank>>>>> getGanks(int year, int month, int day, boolean evict);
 
-    Observable<List<Gank>> getGanks(GankFilterType type);
+    Observable<Reply<List<Gank>>> getGanks(String type, int numPerPage, int pageNum, boolean evict);
 
 }

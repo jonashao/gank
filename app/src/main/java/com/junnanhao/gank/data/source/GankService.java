@@ -31,7 +31,7 @@ public interface GankService {
      * 技术文章列表
      */
     @GET("data/{tech}/{num}/{page}")
-    Observable<Response<List<Gank>>> getTechList(@Path("tech") String tech, @Path("num") int num, @Path("page") int page);
+    Observable<Response<List<Gank>>> getGanks(@Path("tech") String tech, @Path("num") int num, @Path("page") int page);
 
     /**
      * 妹纸列表

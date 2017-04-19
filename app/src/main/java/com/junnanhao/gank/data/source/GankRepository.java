@@ -89,15 +89,16 @@ public class GankRepository implements GanksDataSource {
 
     @Override
     public Observable<Reply<Response<Map<String, List<Gank>>>>> getGanks(Calendar today, boolean evict) {
-        return getGanks(today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DAY_OF_MONTH) , evict);
+        return getGanks(today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DAY_OF_MONTH), evict);
     }
 
 
     @Override
-    public Observable<List<Gank>> getGanks(GankFilterType type) {
-        return null;
+    public Observable<Reply<List<Gank>>> getGanks(String type, int numPerPage, int pageNum, boolean evict) {
+        Observable<List<Gank>> oListGank = gankService.getGanks(type, numPerPage, pageNum)
+                .map(listResponse -> listResponse.results());
+        return gankCacheProvider.getGanksOfType(oListGank, new EvictProvider(evict));
     }
-
 
     @Override
     public Observable<Reply<Response<List<String>>>> getHistory(boolean evict) {

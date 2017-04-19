@@ -13,13 +13,13 @@ import java.util.Map;
  * This specifies the contract between the view and the presenter.
  */
 
-interface GanksContract {
+ interface GanksContract {
 
 
     interface View extends BaseView<Presenter> {
         void setLoadingIndicator(boolean active);
 
-        void showGanks(Map<String,List<Gank>> ganks);
+        void showGanks(Map<String, List<Gank>> ganks);
 
         /**
          * show an interface to submit gank
@@ -41,8 +41,6 @@ interface GanksContract {
         void result(int requestCode, int resultCode);
 
         void loadGanks(boolean forceUpdate);
-
-        void loadGanks(Calendar date, boolean forceUpdate);
 
         void submitGank();
 

@@ -41,6 +41,8 @@ public class ScrollChildSwipeRefreshLayout extends SwipeRefreshLayout {
         super(context, attrs);
     }
 
+
+
     @Override
     public boolean canChildScrollUp() {
         if (mScrollUpChild != null) {
@@ -48,6 +50,7 @@ public class ScrollChildSwipeRefreshLayout extends SwipeRefreshLayout {
         }
         return super.canChildScrollUp();
     }
+
 
     public void setScrollUpChild(View view) {
         mScrollUpChild = view;

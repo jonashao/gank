@@ -6,4 +6,6 @@
     <dimen name="marginLeftDate">20dp</dimen>
     <dimen name="marginDelimiterDot">5dp</dimen>
     <dimen name="list_item_padding">10dp</dimen>
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
 </resources>

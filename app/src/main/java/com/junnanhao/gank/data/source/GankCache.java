@@ -23,9 +23,13 @@ public interface GankCache {
     Observable<Reply<Response<Map<String, List<Gank>>>>>
     getGanks(Observable<Response<Map<String, List<Gank>>>> oGanks, EvictProvider evictProvider);
 
+    @LifeCache(duration = 2, timeUnit = TimeUnit.HOURS)
+    Observable<Reply<List<Gank>>>
+    getGanksOfType(Observable<List<Gank>> oGanks, EvictProvider evictProvider);
 
     @LifeCache(duration = 1, timeUnit = TimeUnit.DAYS)
     Observable<Reply<Response<List<String>>>>
     getHistory(Observable<Response<List<String>>> oGanks, EvictProvider evictProvider);
+
 
 }

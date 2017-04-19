@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_daily"
+            android:icon="@drawable/ic_daily"
+            android:title="@string/daily"/>
+        <item
+            android:id="@+id/nav_android"
+            android:icon="@drawable/ic_android"
+            android:title="@string/android"/>
+        <item
+            android:id="@+id/nav_ios"
+            android:icon="@drawable/ic_ios"
+            android:title="@string/ios"/>
+        <item
+            android:id="@+id/nav_video"
+            android:icon="@drawable/ic_video"
+            android:title="@string/video"/>
+        <item
+            android:id="@+id/nav_resources"
+            android:icon="@drawable/ic_resource"
+            android:title="@string/resources"/>
+        <item
+            android:id="@+id/nav_web"
+            android:icon="@drawable/ic_web"
+            android:title="@string/web"/>
+
+        <item
+            android:id="@+id/nav_bonus"
+            android:icon="@drawable/ic_bonus"
+            android:title="@string/bonus"/>
+    </group>
+
+    <!--<item android:title="Communicate">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_share"-->
+                <!--android:icon="@drawable/ic_menu_share"-->
+                <!--android:title="Share"/>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_send"-->
+                <!--android:icon="@drawable/ic_menu_send"-->
+                <!--android:title="Send"/>-->
+        <!--</menu>-->
+    <!--</item>-->
+
+</menu>

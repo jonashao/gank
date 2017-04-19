@@ -1,12 +1,14 @@
 package com.junnanhao.gank.ganks;
 
 
+import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
+import com.junnanhao.gank.R;
 import com.junnanhao.gank.data.gson.AutoValueGson_AutoValueGsonFactory;
 import com.junnanhao.gank.data.models.Gank;
 import com.junnanhao.gank.data.source.GankRepository;
@@ -27,6 +29,8 @@ import io.reactivex.subjects.AsyncSubject;
 import io.reactivex.subjects.Subject;
 import timber.log.Timber;
 
+import static com.junnanhao.gank.ganks.GankFilterType.DAILY;
+
 /**
  * Created by Jonas on 2017/2/25.
  * Listens to user actions from the UI ({@link GanksContract.View}),
@@ -38,8 +42,12 @@ class GanksPresenter implements GanksContract.Presenter {
     private GanksContract.View view;
     private boolean firstLoad = true;
     private Calendar latestDay;
+    private GankFilterType filter = DAILY;
+    private static final int ITEM_PER_PAGE = 10;
+    private int page = 0;
 
-    public static final int HISTORY_DAY_NUMBER = 60;
+
+    private static final int HISTORY_DAY_NUMBER = 60;
 
     GanksPresenter(GankRepository gankRepository, GanksContract.View view) {
         this.gankRepository = gankRepository;
@@ -95,9 +103,22 @@ class GanksPresenter implements GanksContract.Presenter {
 
 
     @Override
-    public void loadGanks(Calendar date, boolean forceUpdate) {
-        view.setLoadingIndicator(true);
+    public void loadGanks(boolean forceUpdate) {
+        switch (filter.menuId) {
+            case R.id.nav_daily:
+                if (latestDay == null) {
+                    fetchGankHistory(true).subscribe(calendar -> loadGanks(calendar, forceUpdate));
+                } else {
+                    loadGanks(latestDay, forceUpdate);
+                }
+                break;
+            default:
+                loadGanks(filter.name, ITEM_PER_PAGE, page, forceUpdate);
+        }
+    }
 
+    private void loadGanks(Calendar date, boolean forceUpdate) {
+        view.setLoadingIndicator(true);
         Gson gson = new GsonBuilder().registerTypeAdapterFactory(new AutoValueGson_AutoValueGsonFactory()).create();
 
         gankRepository.getGanks(date, forceUpdate)
@@ -120,7 +141,7 @@ class GanksPresenter implements GanksContract.Presenter {
                             Timber.e(throwable);
                             if (throwable instanceof IOException
                                     || throwable instanceof CompositeException
-                                    ||throwable instanceof HttpException)
+                                    || throwable instanceof HttpException)
                                 view.showNetworkError();
 
                             view.setLoadingIndicator(false);
@@ -131,16 +152,28 @@ class GanksPresenter implements GanksContract.Presenter {
                         });
     }
 
+    private void loadGanks(String name, int num, int page, boolean forceUpdate) {
+        view.setLoadingIndicator(true);
 
-    @Override
-    public void loadGanks(boolean forceUpdate) {
-        if (latestDay == null) {
-            fetchGankHistory(true)  .subscribe(calendar -> loadGanks(calendar, forceUpdate));
-            return;
-        }
-        loadGanks(latestDay, forceUpdate);
+        gankRepository.getGanks(name, num, page, forceUpdate)
+                .subscribeOn(Schedulers.io())
+                .map(listReply -> listReply.getData())
+                .filter(ganks -> ganks.size() > 0)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(data -> view.showGanks(ImmutableMap.<String, List<Gank>>of(name, data))
+                        , throwable -> {
+                            Timber.e(throwable);
+                            if (throwable instanceof IOException
+                                    || throwable instanceof CompositeException
+                                    || throwable instanceof HttpException)
+                                view.showNetworkError();
+                            view.setLoadingIndicator(false);
+                            view.showLoadingGanksError();
+                        }, () -> {
+                            firstLoad = false;
+                            view.setLoadingIndicator(false);
+                        });
     }
-
 
     @Override
     public void submitGank() {
@@ -148,12 +181,12 @@ class GanksPresenter implements GanksContract.Presenter {
     }
 
     @Override
-    public void setFiltering(GankFilterType requestType) {
-
+    public void setFiltering(GankFilterType filter) {
+        this.filter = filter;
     }
 
     @Override
     public GankFilterType getFiltering() {
-        return null;
+        return filter;
     }
 }
