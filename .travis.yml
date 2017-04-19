@@ -22,6 +22,9 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_70d69dea56b6_key -iv $encrypted_70d69dea56b6_iv
   -in gank_keystore.jks.enc -out keys/gank_keystore.jks -d
 - chmod +x gradlew
+- gem update --system
+- gem --version
+- rvm install 2.2
 - gem install fir-cli
 before_deploy:
 - mv app/build/outputs/apk/app-release.apk app/build/outputs/apk/gank.apk
