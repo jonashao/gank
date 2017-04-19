@@ -48,7 +48,7 @@ public class GankView extends CardView implements GankContract.View {
     private void init() {
         inflate(getContext(), R.layout.gank_item_content, this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            setElevation(5);
+            setElevation(2);
         }
         ButterKnife.bind(this);
         p = new PrettyTime();

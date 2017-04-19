@@ -78,7 +78,7 @@ dependencies {
     compile "com.android.support:design:$rootProject.supportLibraryVersion"
     compile "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
     compile "com.android.support:customtabs:$rootProject.supportLibraryVersion"
-    compile 'com.android.support.constraint:constraint-layout:1.0.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
     // mark button
     compile 'net.colindodd:toggleimagebutton:1.2'

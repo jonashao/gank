@@ -46,8 +46,6 @@ public class GanksView extends ScrollChildSwipeRefreshLayout implements GanksCon
         init();
     }
 
-
-
     private void init() {
         inflate(getContext(), R.layout.ganks_view_content, this);
         ButterKnife.bind(this);

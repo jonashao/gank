@@ -15,8 +15,8 @@ import static android.util.TypedValue.COMPLEX_UNIT_DIP;
  * are on the grid.
  */
 public class VerticalGridCardSpacingDecoration extends ItemDecoration {
-    private static final int OUTER_PADDING_DP = 16;
-    private static final int INNER_PADDING_DP = 8;
+    private static final int OUTER_PADDING_DP = 8;
+    private static final int INNER_PADDING_DP = 6;
     private int outerPadding = -1;
     private int innerPadding = -1;
 
@@ -30,8 +30,6 @@ public class VerticalGridCardSpacingDecoration extends ItemDecoration {
 
         // Zero everything out for the common case
         outRect.setEmpty();
-
         outRect.bottom = innerPadding;
-
     }
 }
